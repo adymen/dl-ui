@@ -26,7 +26,7 @@ export class List {
     }
   }
 
-  context = ["Rincian"];
+  context = ["Rincian", "Cetak PDF"];
 
   columns = [
     { field: "ServiceSubconSewingNo", title: "No Subcon Jasa Garment Wash" },
@@ -35,9 +35,9 @@ export class List {
         return moment(value).format("DD MMM YYYY")
       },
     },
-    //{ field: "UnitCode", title: "Unit" },
-    // { field: "RONo", title: "RO" },
-    // { field: "Article", title: "No Artikel" },
+    { field: "BuyerName", title: "Buyer" },
+    { field: "TotalQuantity", title: "Total Quantity" },
+    { field: "UOM", title: "Satuan" },
     // { field: "TotalQuantity", title: "Jumlah", sortable: false },
     // { field: "ColorList", title: "Warna", sortable: false },
     // { field: "ProductList", title: "Kode Barang", sortable: false },
@@ -82,6 +82,9 @@ export class List {
       case "Rincian":
         this.router.navigateToRoute('view', { id: data.Id });
         break;
+      case "Cetak PDF": 
+          this.service.getPdfById(data.Id); 
+          break;
       
     }
   }

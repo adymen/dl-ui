@@ -62,7 +62,7 @@ export class Create {
                             // pph=parseFloat(detail.PriceTotal)*parseFloat(rate)*0.01;
                             pph = item.IncomeTaxValue;
                         }
-                        if(item.IsPayVat){
+                        if(item.IsPayVAT){
                             // ppn=detail.PriceTotal*0.1;
                             ppn = item.VatValue;
                         }
@@ -72,7 +72,7 @@ export class Create {
                         }
                         this.data.IncomeTaxValue+=pph;
                         this.data.IncomeTaxValueView +=pphView;                        
-                        this.data.VatValue+=pph;
+                        this.data.VatValue+=ppn;
                         this.data.VatValueView+=ppnView;                        
                         this.data.DPP+=item.DPPValue;
                         incomeTaxCalculate +=pph;
@@ -86,7 +86,7 @@ export class Create {
                 // }
             }
             // this.data.Amount =(this.data.DPP+this.data.VatValue+this.data.MiscAmount)-this.data.IncomeTaxValue;
-            this.data.Amount =(this.data.DPP+vatCalculate+this.data.MiscAmount)-incomeTaxCalculate;
+            this.data.Amount = parseFloat((this.data.DPP+vatCalculate+this.data.MiscAmount)-incomeTaxCalculate).toFixed(3);
             // this.data.IncomeTaxValue = this.data.IncomeTaxValueView;
             // this.data.VatValue = this.data.VatValueView;
             
